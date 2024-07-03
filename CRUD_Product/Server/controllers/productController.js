@@ -20,9 +20,20 @@ const getProducts = async (req, res) => {
   }
 };
 
-// Add more controller functions as needed
+const getProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id, "id===>");
+    const products = await Product.findById(id);
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Error retrieving product:", error.message);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   createProduct,
   getProducts,
+  getProduct,
 };
