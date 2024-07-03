@@ -1,6 +1,16 @@
 const express = require("express");
 // const morgan = require("morgan");
 require("dotenv").config();
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log("Connected to Mongo Db");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
