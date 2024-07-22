@@ -1,6 +1,9 @@
 const express = require("express");
 // const morgan = require("morgan");
 require("dotenv").config();
+
+const userRoutes = require("./routes/user.route.js");
+
 const mongoose = require("mongoose");
 
 mongoose
@@ -20,9 +23,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
+
+app.use("/api/user", userRoutes);
 
 // Start server
 app.listen(PORT, () => {
